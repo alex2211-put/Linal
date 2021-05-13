@@ -116,8 +116,6 @@ Vector2D Vector2D::operator/=(const double b)
     return *this;
 };
 
-// Оператор умножения скаляра на вектор, исходный вектор не меняется, возвращается новый вектор
-// Неожиданно, правда? Умножение скаляра на вектор - это отдельный оператор, причём описанный *вне* класса.
 Vector2D operator*(double a, const Vector2D &v)
 {
     double x2 = a * v.getX();
@@ -125,14 +123,13 @@ Vector2D operator*(double a, const Vector2D &v)
     return Vector2D(x2, y2);
 };
 
-// Вывод вектора, ожидается строго в формате (1; 1)
+// Вывод вектора в формате (1; 1)
 std::ostream &operator<<(std::ostream &os, const Vector2D &v)
 {
     os << "(" << v.getX() << "; " << v.getY() << ")";
     return os;
 };
 
-// Чтение вектора, читает просто две координаты без хитростей
 std::istream &operator>>(std::istream &is, Vector2D &v)
 {
     double a, b;
